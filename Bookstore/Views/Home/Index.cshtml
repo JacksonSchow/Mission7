@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+@model BooksViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 text-center">
+            <h1>Professor Hilton's Bookstore</h1>
+
+            @foreach (Book b in Model.Books)
+            {
+                <h3>@b.Title</h3>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-2 text-left">
+                        <ul>
+                            <li>Author</li>
+                            <li>Publisher</li>
+                            <li>ISBN</li>
+                            <li>Classification</li>
+                            <li>Category</li>
+                            <li>Page Count</li>
+                            <li>Price</li>
+                        </ul>
+                    </div>
+                    <div class="col-6 text-left">
+                        <ul>
+                            <li>@b.Author</li>
+                            <li>@b.Publisher</li>
+                            <li>@b.Isbn</li>
+                            <li>@b.Classification</li>
+                            <li>@b.Category</li>
+                            <li>@b.PageCount</li>
+                            <li>$@b.Price</li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+            }
+            <div class="text-center">
+                <div page-model="@Model.PageInfo" page-action="Index" class="text-center"></div>
+                <h6>Page @Model.PageInfo.CurrentPage of @Model.PageInfo.TotalPages </h6>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
